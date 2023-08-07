@@ -1,0 +1,732 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My RestAPI",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "User login",
+                "operationId": "da2ca4d7a5cdec77b8b45a20373535cb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "Bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer"
+                                        },
+                                        "user": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/v1/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register a new user",
+                "operationId": "6796c44e1f6079c411abbfed066c5907",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "John"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Doe"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/v1/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout",
+                "description": "Invalidate the access_token and log the user out",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "Successful logout",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "message": "Successfully logged out"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": "Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/refresh": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Refresh Access Token",
+                "description": "Refresh the access token using a valid refresh token",
+                "operationId": "refreshToken",
+                "responses": {
+                    "200": {
+                        "description": "Successful token refresh",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "access_token": "new_access_token_here"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": "Invalid token"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": "Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/candidates/{id}": {
+            "get": {
+                "tags": [
+                    "Candidates"
+                ],
+                "summary": "Get a specific candidate",
+                "operationId": "47c34a93f02a8737f0af7f1b31a276f1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the candidate to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "first_name": "ovi",
+                                            "last_name": "balaji",
+                                            "age": 25,
+                                            "department": "computer",
+                                            "min_salary_expectation": "300000",
+                                            "max_salary_expectation": "600000",
+                                            "code": "USD",
+                                            "street_address": "Chennai,TamilNadu",
+                                            "city": "Madurai",
+                                            "state": "Tamil Nadu",
+                                            "postal_code": "62521",
+                                            "type": "mobile",
+                                            "number": "910101010",
+                                            "school": "Thaai School",
+                                            "degree": "BE",
+                                            "major": "MBA",
+                                            "skill": "Software Developer",
+                                            "company": "Purplematics",
+                                            "title": "Project Lead",
+                                            "years": 5
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Candidate not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Candidates"
+                ],
+                "summary": "Update a specific candidate",
+                "operationId": "a79684f03c8a5ff94f7032e2bdcc0ef6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the candidate to be updated",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "age": {
+                                        "type": "integer"
+                                    },
+                                    "department": {
+                                        "type": "string"
+                                    },
+                                    "min_salary_expectation": {
+                                        "type": "string"
+                                    },
+                                    "max_salary_expectation": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "street_address": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "state": {
+                                        "type": "string"
+                                    },
+                                    "postal_code": {
+                                        "type": "integer"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "number": {
+                                        "type": "integer"
+                                    },
+                                    "school": {
+                                        "type": "string"
+                                    },
+                                    "degree": {
+                                        "type": "string"
+                                    },
+                                    "major": {
+                                        "type": "string"
+                                    },
+                                    "skill": {
+                                        "type": "string"
+                                    },
+                                    "level": {
+                                        "type": "string"
+                                    },
+                                    "company": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "years": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Candidate updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "message": "Candidate updated successfully",
+                                    "Candidate ID": "10"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Candidates"
+                ],
+                "summary": "Delete a specific candidate",
+                "operationId": "6a475e6995c48a192a75d7f340c03c5d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the candidate to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Candidate deleted successfully"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Candidate not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/candidates": {
+            "get": {
+                "tags": [
+                    "Candidates"
+                ],
+                "summary": "Get all candidates with pagination",
+                "operationId": "e7ab9f74d1d3ddb6b78f785fe0559d6f",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "first_name": "ovi",
+                                            "last_name": "balaji",
+                                            "age": 25,
+                                            "department": "computer",
+                                            "min_salary_expectation": "300000",
+                                            "max_salary_expectation": "600000",
+                                            "code": "USD",
+                                            "street_address": "Chennai,TamilNadu",
+                                            "city": "Madurai",
+                                            "state": "Tamil Nadu",
+                                            "postal_code": "62521",
+                                            "type": "mobile",
+                                            "number": "910101010",
+                                            "school": "Thaai School",
+                                            "degree": "BE",
+                                            "major": "MBA",
+                                            "skill": "Software Developer",
+                                            "company": "Purplematics",
+                                            "title": "Project Lead",
+                                            "years": 5
+                                        },
+                                        {
+                                            "id": 2,
+                                            "first_name": "John",
+                                            "last_name": "Cena",
+                                            "age": 40,
+                                            "department": "Tester",
+                                            "min_salary_expectation": "900000",
+                                            "max_salary_expectation": "900000",
+                                            "code": "USD",
+                                            "street_address": "Samuthar,Delhi",
+                                            "city": "Red Fort",
+                                            "state": "Delhi",
+                                            "postal_code": "192033",
+                                            "type": "mobile",
+                                            "number": "9030101010",
+                                            "school": "Gandhi School",
+                                            "degree": "BE",
+                                            "major": "MBA",
+                                            "skill": "Software Tester",
+                                            "company": "TCS",
+                                            "title": "Project Lead",
+                                            "years": 10
+                                        }
+                                    ],
+                                    "meta": {
+                                        "current_page": 1,
+                                        "per_page": 10,
+                                        "total": 20
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Candidates"
+                ],
+                "summary": "Create a new candidate",
+                "operationId": "cde870ee041ab3c846c9e4bd63929e15",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "age": {
+                                        "type": "integer"
+                                    },
+                                    "department": {
+                                        "type": "string"
+                                    },
+                                    "min_salary_expectation": {
+                                        "type": "string"
+                                    },
+                                    "max_salary_expectation": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "street_address": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "state": {
+                                        "type": "string"
+                                    },
+                                    "postal_code": {
+                                        "type": "integer"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "number": {
+                                        "type": "integer"
+                                    },
+                                    "school": {
+                                        "type": "string"
+                                    },
+                                    "degree": {
+                                        "type": "string"
+                                    },
+                                    "major": {
+                                        "type": "string"
+                                    },
+                                    "skill": {
+                                        "type": "string"
+                                    },
+                                    "level": {
+                                        "type": "string"
+                                    },
+                                    "company": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "years": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Candidate created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "message": "Candidate created successfully",
+                                    "Candidate ID": "10"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/candidates/search": {
+            "post": {
+                "tags": [
+                    "Candidates"
+                ],
+                "summary": "Search for candidates with pagination",
+                "operationId": "1224b0574c07512b9318538e647d71a0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "keyword": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Candidates search results",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "current_page": 1,
+                                    "data": {
+                                        "0": {
+                                            "id": 1,
+                                            "first_name": "John",
+                                            "last_name": "Doe",
+                                            "age": 30,
+                                            "department": "IT",
+                                            "min_salary_expectation": "900000",
+                                            "max_salary_expectation": "900000",
+                                            "code": "USD",
+                                            "street_address": "Samuthar,Delhi",
+                                            "city": "Red Fort",
+                                            "state": "Delhi",
+                                            "postal_code": "192033",
+                                            "type": "mobile",
+                                            "number": "9030101010",
+                                            "school": "Gandhi School",
+                                            "degree": "BE",
+                                            "major": "MBA",
+                                            "skill": "Software Tester",
+                                            "company": "TCS",
+                                            "title": "Project Lead",
+                                            "years": 10
+                                        },
+                                        "links": {
+                                            "first": "http://example.com/api/v1/candidates/search?page=1",
+                                            "last": "http://example.com/api/v1/candidates/search?page=5",
+                                            "prev": null,
+                                            "next": "http://example.com/api/v1/candidates/search?page=2"
+                                        },
+                                        "meta": {
+                                            "current_page": 1,
+                                            "from": 1,
+                                            "last_page": 5,
+                                            "path": "http://example.com/api/v1/candidates/search",
+                                            "per_page": 10,
+                                            "to": 10,
+                                            "total": 50
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
