@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "4fecfa5c-a8fe-4d5f-a691-105e09ea1652",
+		"name": "Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20088409"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"item": [
+				{
+					"name": "To signup a user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ovibalaji97@gmail.com\",\r\n    \"password\": \"welcome\",\r\n    \"first_name\":\"ovi\",\r\n    \"last_name\":\"balaji\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To get access token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"ovibalaji97@gmail.com\",\r\n    \"password\": \"welcome\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get new access token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNjkxMDcwMDY4LCJleHAiOjE2OTEwNzM2NjgsIm5iZiI6MTY5MTA3MDA2OCwianRpIjoiTUhaWVFJNHVYb2Z3Wk9hQyIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.4wzi_4tgyCA2dqCh9vCQKb3N_tBDeHlc1QbIjjKkIto",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/refresh",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To invalidate refresh token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL3JlZnJlc2giLCJpYXQiOjE2OTEwNzAwNjgsImV4cCI6MTY5MTA3MzY4NywibmJmIjoxNjkxMDcwMDg3LCJqdGkiOiJVUFBFaW1IVGJ3czVuMEFnIiwic3ViIjoiMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.zr_HLX2mBk7Z6RNdM1_uMBdkK5QESz3IiZuRhWkTnWU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidates",
+			"item": [
+				{
+					"name": "To get all candidates with pagination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNjkxMDcwNTA1LCJleHAiOjE2OTEwNzQxMDUsIm5iZiI6MTY5MTA3MDUwNSwianRpIjoiTU1hTGUxSHZEbGNGYXZERCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Rlv57w4oQWsfNU_GH-B7Bvx53Y_vapo77LIGjH2an30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/candidates",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"candidates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To save a candidate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNjkxMDcwNTA1LCJleHAiOjE2OTEwNzQxMDUsIm5iZiI6MTY5MTA3MDUwNSwianRpIjoiTU1hTGUxSHZEbGNGYXZERCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Rlv57w4oQWsfNU_GH-B7Bvx53Y_vapo77LIGjH2an30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n             \"first_name\" : \"ovi\",\r\n            \"last_name\" :\"balaji\",\r\n            \"age\" : \"21\",\r\n            \"department\" :\"computer\",\r\n            \"min_salary_expectation\": \"3\",\r\n            \"max_salary_expectation\": \"6\",\r\n            \"code\" : \"USD\",\r\n            \"country\" : \"chennai\",\r\n            \"street_address\" : \"Chennai,TamilNadu\",\r\n            \"city\" : \"MDU\",\r\n            \"state\" : \"TN\",\r\n            \"postal_code\" : \"62521\",\r\n            \"type\" : \"mobile\",\r\n            \"number\" : \"91010101\",\r\n            \"school\" : \"Thaai\",\r\n            \"degree\" : \"BE\",\r\n            \"major\" : \"MBA\",\r\n            \"skill\" : \"Software Developer\",\r\n            \"level\" : \"Senior\",\r\n            \"company\" : \"Purplematics\",\r\n            \"title\" : \"Tech Lead\",\r\n            \"years\" : \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/candidates",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"candidates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To get a specific candidate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNjkxMDcwNTA1LCJleHAiOjE2OTEwNzQxMDUsIm5iZiI6MTY5MTA3MDUwNSwianRpIjoiTU1hTGUxSHZEbGNGYXZERCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Rlv57w4oQWsfNU_GH-B7Bvx53Y_vapo77LIGjH2an30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/candidates/33",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"candidates",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To search for candidates with pagination",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNjkxMDcwNTA1LCJleHAiOjE2OTEwNzQxMDUsIm5iZiI6MTY5MTA3MDUwNSwianRpIjoiTU1hTGUxSHZEbGNGYXZERCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Rlv57w4oQWsfNU_GH-B7Bvx53Y_vapo77LIGjH2an30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"keyword\":\"ovi\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/candidates/search",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"candidates",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To delete a specific candidate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNjkxMDcwNTA1LCJleHAiOjE2OTEwNzQxMDUsIm5iZiI6MTY5MTA3MDUwNSwianRpIjoiTU1hTGUxSHZEbGNGYXZERCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Rlv57w4oQWsfNU_GH-B7Bvx53Y_vapo77LIGjH2an30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/candidates/33",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"candidates",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To update a candidate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNjkxMDcwNTA1LCJleHAiOjE2OTEwNzQxMDUsIm5iZiI6MTY5MTA3MDUwNSwianRpIjoiTU1hTGUxSHZEbGNGYXZERCIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.Rlv57w4oQWsfNU_GH-B7Bvx53Y_vapo77LIGjH2an30",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n             \"first_name\" : \"ovi\",\r\n            \"last_name\" :\"balaji\",\r\n            \"age\" : \"21\",\r\n            \"department\" :\"computer\",\r\n            \"min_salary_expectation\": \"3\",\r\n            \"max_salary_expectation\": \"6\",\r\n            \"code\" : \"USD\",\r\n            \"country\" : \"chennai\",\r\n            \"street_address\" : \"Chennai,TamilNadu\",\r\n            \"city\" : \"MDU\",\r\n            \"state\" : \"TN\",\r\n            \"postal_code\" : \"62521\",\r\n            \"type\" : \"mobile\",\r\n            \"number\" : \"91010101\",\r\n            \"school\" : \"Thaai\",\r\n            \"degree\" : \"BE\",\r\n            \"major\" : \"MBA\",\r\n            \"skill\" : \"Software Developer\",\r\n            \"level\" : \"Senior\",\r\n            \"company\" : \"Purplematics\",\r\n            \"title\" : \"Tech Lead\",\r\n            \"years\" : \"5\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/candidates/34",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"candidates",
+								"34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
