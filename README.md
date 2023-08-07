@@ -58,6 +58,11 @@ The candidates flow of the application is as follows:
 2) Open your browser and navigate to http://localhost:8000 to access the application.
 
 
+## API Documentation:
+1) This project provides API documentation using the OpenAPI Specification. The documentation describes the various endpoints, request/response payloads, authentication, and more.
+2) Open your browser and navigate to http://localhost:8080/docs to access the Swagger UI interface..
+
+
 ## Authentication Flow
     Register: Click on the "Register" link to create a new user account. Provide your email and password.
 
