@@ -86,6 +86,7 @@ The candidates flow of the application is as follows:
       
 6. Generate JWT secret key: `php artisan jwt:secret`
 7. Start the development server: `php artisan serve`
+8. If necessary, download the sample database.
 
 
 ## Usage
