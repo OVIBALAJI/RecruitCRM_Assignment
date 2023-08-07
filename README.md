@@ -21,6 +21,111 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+# RecruitCRM_Assignment
+
+This project is a Laravel-based application that implements authentication and candidates management.
+
+## Table of Contents
+
+- [Authentication Flow](#authentication-flow)
+- [Candidates Flow](#candidates-flow)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+
+## Authentication Flow
+
+The authentication flow of the application is as follows:
+
+1. Users can register using the `/api/v1/register` endpoint.
+2. Registered users can log in using the `/api/v1/login` endpoint to obtain access and refresh tokens.
+3. Users can use the `/api/v1/token/refresh` endpoint to refresh their access token.
+4. Logged-in users can use the `/api/v1/logout` endpoint to invalidate their refresh token and log out.
+
+## Candidates Flow
+
+The candidates flow of the application is as follows:
+
+1. Logged-in users can create a new candidate using the `/api/v1/candidates` endpoint.
+2. Users can retrieve a specific candidate using the `/api/v1/candidates/{id}` endpoint.
+3. Users can retrieve a paginated list of all candidates using the `/api/v1/candidates` endpoint.
+4. Users can search for candidates with pagination using the `/api/v1/candidates/search` endpoint.
+5. Logged-in users can update a specific candidate using the `/api/v1/candidates/{id}` endpoint.
+6. Logged-in users can delete a specific candidate using the `/api/v1/candidates/{id}` endpoint.
+
+## Single Page Application
+1) Start the development server:[php artisan serve]
+2) Open your browser and navigate to http://localhost:8000 to access the application.
+
+
+## Authentication Flow
+    Register: Click on the "Register" link to create a new user account. Provide your email and password.
+
+    Login: Use the registered email and password to log in. Upon successful login, you'll be redirected to the candidates page.
+
+    Candidates: View, create, update, and delete candidates. The candidates are associated with the logged-in user.
+
+    Logout: Click on the "Logout" button to log out and end your session.
+
+
+## Installation
+
+1. Clone the repository: `git clone https://github.com/yourusername/your-repo.git`
+2. Install dependencies: `composer install`
+3. Copy `.env.example` to `.env` and configure your database settings.
+4. Generate application key: `php artisan key:generate`
+5. Run migrations,Based on foreign key connections :
+   1) `php artisan migrate --path=/database/migrations/2014_10_12_000000_create_users_table.php`,
+   2) `php artisan migrate --path=/database/migrations/2023_08_02_131748_create_currencies_table.php`,
+   3) `php artisan migrate --path=/database/migrations/2023_08_02_131804_create_addresses_table.php`,
+   4) 'php artisan migrate --path=/database/migrations/2023_08_02_131734_create_candidates_table.php',
+   5) 'php artisan migrate --path=/database/migrations/2023_08_02_131813_create_phone_numbers_table.php',
+   6) 'php artisan migrate --path=/database/migrations/2023_08_02_131823_create_education_table.php',
+   7) 'php artisan migrate --path=/database/migrations/2023_08_02_131833_create_skills_table.php',
+   8) 'php artisan migrate --path=/database/migrations/2023_08_02_131840_create_experiences_table.php',
+      
+6. Generate JWT secret key: `php artisan jwt:secret`
+7. Start the development server: `php artisan serve`
+
+
+## Usage
+
+- Register a user: `/v1/register`
+- Log in: `/v1/login`
+- Refresh access token: `/v1/token/refresh`
+- Log out: `/v1/logout`
+- Create a candidate: `/v1/candidates`
+- Get a candidate: `/v1/candidates/{id}`
+- Get all candidates: `/v1/candidates`
+- Search candidates: `/v1/candidates/search`
+- Update a candidate: `/v1/candidates/{id}`
+- Delete a candidate: `/v1/candidates/{id}`
+
+
+## Installation
+
+1. Clone the repository: `git clone https://github.com/yourusername/your-repo.git`
+2. Install dependencies: `composer install`
+3. Copy `.env.example` to `.env` and configure your database settings.
+4. Generate application key: `php artisan key:generate`
+5. Run migrations: `php artisan migrate`
+6. Generate JWT secret key: `php artisan jwt:secret`
+7. Start the development server: `php artisan serve`
+
+## Usage
+
+- Register a user: `/v1/register`
+- Log in: `/v1/login`
+- Refresh access token: `/v1/token/refresh`
+- Log out: `/v1/logout`
+- Create a candidate: `/v1/candidates`
+- Get a candidate: `/v1/candidates/{id}`
+- Get all candidates: `/v1/candidates`
+- Search candidates: `/v1/candidates/search`
+- Update a candidate: `/v1/candidates/{id}`
+- Delete a candidate: `/v1/candidates/{id}`
+
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
